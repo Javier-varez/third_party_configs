@@ -10,7 +10,7 @@ IRQ_GENERATED_FILES = $(NVIC_H) $(VECTOR_NVIC_C) $(IRQHANDLERS_H)
 
 $(LIBOPENCM3_DIR)/include/libopencm3/%/nvic.h $(LIBOPENCM3_DIR)/lib/%/vector_nvic.c $(LIBOPENCM3_DIR)/include/libopencmsis/%/irqhandlers.h: INTERNAL_LIBOPENCM3_DIR := $(LIBOPENCM3_DIR)
 $(LIBOPENCM3_DIR)/include/libopencm3/%/nvic.h $(LIBOPENCM3_DIR)/lib/%/vector_nvic.c $(LIBOPENCM3_DIR)/include/libopencmsis/%/irqhandlers.h: $(LIBOPENCM3_DIR)/include/libopencm3/%/irq.json
-	@cd $(LOCAL_DIR)/../../libopencm3/; ./scripts/irq2nvic_h $(patsubst $(INTERNAL_LIBOPENCM3_DIR)/%, ./%, $<)
+	@cd $(INTERNAL_LIBOPENCM3_DIR) && ./scripts/irq2nvic_h $(patsubst $(INTERNAL_LIBOPENCM3_DIR)/%, ./%, $<)
 
 include $(CLEAR_VARS)
 
